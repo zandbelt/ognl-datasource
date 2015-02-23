@@ -1,4 +1,4 @@
-# ognl-datasource
+# OGNL Custom Data Store
 
 A custom data store for PingFederate that parses OGNL expressions
 
