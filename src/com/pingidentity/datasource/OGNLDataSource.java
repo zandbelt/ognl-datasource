@@ -104,11 +104,21 @@ public class OGNLDataSource implements CustomDataSourceDriver {
 
 		try {
 			Object parsedExpression = Ognl.parseExpression(expr);
-			Object value = ExpressionCalculator.calculate(parsedExpression, null, null);
+			Map<String, Object> map = new HashMap<String, Object>();
+			Object value = ExpressionCalculator.calculate(parsedExpression, map, map);
 			theMap.put(attributeName, value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		/*
+		java.util.ArrayList<String> roles = new java.util.ArrayList<String>();
+		roles.add("role1");
+		roles.add("role1");
+		Map<String, Object> result = new HashMap<String,Object>();
+		result.put("result", new org.sourceid.saml20.adapter.attribute.AttributeValue(roles));
+		return result;
+		*/
 		return theMap;
 	}
 
@@ -122,7 +132,7 @@ public class OGNLDataSource implements CustomDataSourceDriver {
 
 	public SourceDescriptor getSourceDescriptor() {
 		AdapterConfigurationGuiDescriptor desc = new AdapterConfigurationGuiDescriptor();
-		desc.setDescription("OGNL Datasource");
+		desc.setDescription("OGNL Datasource 1.1");
 
 		//TextFieldDescriptor attribute = new TextFieldDescriptor("attribute",
 		//		"Attribute Name");
